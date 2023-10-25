@@ -2,6 +2,7 @@ import { DateTime } from 'luxon'
 import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import Student from './Students'
 import Subjects from './Subjects'
+import ValueType from './ValueTypes'
 
 export default class Grades extends BaseModel {
   @column({ isPrimary: true })
@@ -18,6 +19,12 @@ export default class Grades extends BaseModel {
 
   @belongsTo(() => Subjects)
   public subject: BelongsTo<typeof Subjects>
+
+  @column()
+  public valueTypeId: number
+
+  @belongsTo(() => ValueType)
+  public valueType: BelongsTo<typeof ValueType>
 
   @column()
   public jenis_nilai: string
